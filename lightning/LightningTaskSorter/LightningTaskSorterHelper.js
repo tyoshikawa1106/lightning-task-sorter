@@ -1,5 +1,5 @@
 ({
-	getTasks : function(component) {
+    getTasks : function(component) {
         var action = component.get("c.getTasks");
         action.setCallback(this, function(data) {
             component.set("v.tasks", data.getReturnValue());
