@@ -1,7 +1,7 @@
 ({
-	doInit : function(component, event, helper) {
-		helper.getTasks(component);
-	},
+    doInit : function(component, event, helper) {
+        helper.getTasks(component);
+    },
     dateSortClick : function(component, event, helper) {
         helper.selectDateSort(component);
         helper.doSortByDate(component);
