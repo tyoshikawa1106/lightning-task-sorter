@@ -1,5 +1,5 @@
 <aura:component controller="TaskSorterController" implements="force:appHostable,flexipage:availableForAllPageTypes">
-	<aura:attribute name="tasks" type="Task[]" />
+    <aura:attribute name="tasks" type="Task[]" />
     <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
     <div aura:id="aura-cmp">
         <nav>
