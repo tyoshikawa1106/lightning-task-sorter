@@ -6,11 +6,13 @@
             <ul>
                 <li class="selected" aura:id="dateSort">
                     <a href="#" class="date" onclick="{!c.dateSortClick}">
+                        <!-- Date Sort -->
                         <ui:outputText value="日付順" />
                     </a>
                 </li>
                 <li aura:id="titleSort">
                     <a href="#" class="name" onclick="{!c.titleSortClick}">
+                        <!-- Subject Sort -->
                         <ui:outputText value="タイトル順" />
                     </a>
                 </li>
