@@ -1,0 +1,73 @@
+<apex:page >
+    <style type="text/css">
+        #vf-page ul li {
+            list-style-type: none;
+            padding: 0;
+            margin-left: -40px;
+        }
+
+        #vf-page a { border: none; outline: none; overflow: hidden;}
+        #vf-page a:link    { color: #837a68; text-decoration: none;}
+        #vf-page a:visited { color: #837a68; text-decoration: none;}
+        #vf-page a:hover   { color: #d49586; text-decoration: none;}
+        #vf-page a:active  { color: #d49586; text-decoration: none;}
+
+        #vf-page nav ul {
+            display: block;
+            width: 100%;
+            padding: 4px;
+        }
+
+        #vf-page nav li {
+            font-size: 14px;
+            display: inline-block;
+            margin: 4px;
+            padding: 5px 10px;
+        }
+
+        #vf-page .caption p {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 5px;
+        }
+
+        #vf-page nav li.selected {
+            border: solid 1px #b2ac9f;
+        }
+
+        #vf-page .cards {
+            border: 1px solid #dfe0e1;
+            background-color: #FFFFFF;
+            border-radius: 2px;
+            padding: 5px;
+            margin-bottom: 5px;
+            border-left: 10px solid #CF5C60;
+            box-shadow: 0 10px 6px -6px #777;
+        }
+
+        #vf-page .each {
+            width: 350px;
+            min-height: 70px;
+            margin: 10px;
+            float: left;
+            opacity: 0;
+            vertical-align: middle;
+        }
+
+        #vf-page .floatClear:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        #vf-page .taskSubject {
+            font-size: 22px;
+        }
+
+        @media screen and (max-device-width: 480px) {
+            #vf-page .cards {
+                width: 90%;
+            }
+        }
+    </style>
+</apex:page>

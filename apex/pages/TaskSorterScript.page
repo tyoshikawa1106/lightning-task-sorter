@@ -1,0 +1,73 @@
+<apex:page >
+    <script type="text/javascript">
+        var $j =jQuery.noConflict();
+        $j(document).ready(function () {
+
+            var todoCards = [];
+            var currentSort = 0;
+
+            //全てのToDoレコードを配列に入れ最初の演出を行う
+            $j(".each").each(function (i) {
+                todoCards.push(this);
+                $j(this).stop().delay(300 + i * 200).animate({"opacity": "1"}, 800);
+            });
+
+            /**
+             * ソートしてフィルタリング
+             */
+            function sortAndFilter() {
+                //currentSort番目のpのカスタムデータ属性でソート
+                todoCards.sort(function (a, b) {
+
+                    var aData = $j(a).find("p")[currentSort].dataset["keyValue"];
+                    var bData = $j(b).find("p")[currentSort].dataset["keyValue"];
+
+                    if (aData < bData) return -1;
+                    if (aData > bData) return 1;
+                    return 0;
+                });
+
+                // 全て非表示（DOMから外す）
+                $j(".each").remove();
+                // 透明な状態でリストに追加
+                for (var i = 0; i < todoCards.length; i++) {
+                        $j("#taskArea").append(todoCards[i]);
+                        $j(todoCards[i]).css({"opacity": 0});
+                    
+                }
+                //表示
+                $j("#taskArea .each").each(function (i) {
+                    $j(this).stop().delay(i * 200).animate({"opacity": "1"}, 800);
+                });
+            }
+
+            //ナビをクリックした時の処理
+            $j("nav a").on({
+                "click": function (e) {
+                    e.preventDefault();
+
+                    //クリックされたナビによって処理を分岐
+                    switch ($j(this).attr("class")) {
+
+                        //日付順ソート
+                        case "date":
+                            currentSort = 0;
+                            break;
+                        // タイトル順ソート
+                        case "name":
+                            currentSort = 1;
+                            break;
+                    }
+
+                    sortAndFilter();
+
+                    //枠をつけかえる
+                    $j(this).parents("ul").find("li").removeClass("selected");
+                    $j(this).parent().addClass("selected");
+
+                    return false;
+                }
+            });
+        });
+    </script>
+</apex:page>

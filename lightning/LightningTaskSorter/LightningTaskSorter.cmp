@@ -1,0 +1,38 @@
+<aura:component controller="TaskSorterController" implements="force:appHostable,flexipage:availableForAllPageTypes">
+	<aura:attribute name="tasks" type="Task[]" />
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <div aura:id="aura-cmp">
+        <nav>
+            <ul>
+                <li class="selected" aura:id="dateSort">
+                    <a href="#" class="date" onclick="{!c.dateSortClick}">
+                        <ui:outputText value="日付順" />
+                    </a>
+                </li>
+                <li aura:id="titleSort">
+                    <a href="#" class="name" onclick="{!c.titleSortClick}">
+                        <ui:outputText value="タイトル順" />
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div id="{!globalId + '_taskArea'}" class="taskList floatClear">
+            <ul>
+                <aura:iteration items="{!v.tasks}" var="item" indexVar="index">
+                    <li>
+                        <div class="cards each">
+                            <div class="picCaption">
+                                <p data-key-value="{!item.ActivityDate}">
+                                    <ui:outputText value="{!item.ActivityDate}" />
+                                </p>
+                                <p data-key-value="{!item.Subject}">
+                                    <ui:outputText value="{!item.Subject}" class="taskSubject" />
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </aura:iteration>
+            </ul>
+        </div>
+    </div>
+</aura:component>

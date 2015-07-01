@@ -1,0 +1,49 @@
+<apex:page controller="TaskSorterController" showHeader="true" sidebar="false" title="TaskSorter" tabStyle="Task" action="{!doInit}" id="page">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <apex:include pageName="TaskSorterCss" />
+    <apex:includeScript value="{!URLFOR($Resource.TaskSorterLibrary, 'jquery/dist/jquery.min.js')}" />
+    <!-- main code -->
+    <div id="vf-page">
+        <apex:form id="form">
+            <apex:pageMessages id="msg" />
+            <!-- Navi Link -->
+            <nav>
+                <ul>
+                    <li class="selected">
+                        <a href="#" class="date">
+                            <apex:outputText value="日付順" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="name">
+                            <apex:outputText value="タイトル順" />
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Task List -->
+            <div id="taskArea" class="taskList floatClear">
+                <ul>
+                    <apex:repeat value="{!tasks}" var="item">
+                        <li>
+                            <div class="cards each">
+                                <div class="caption">
+                                    <p data-key-value="{!TEXT(item.ActivityDate)}">
+                                        <apex:outputField value="{!item.ActivityDate}" />
+                                    </p>
+                                    <p data-key-value="{!item.Subject}">
+                                        <apex:outputText value="{!item.Subject}" styleClass="taskSubject" />
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </apex:repeat>
+                </ul>
+            </div>
+        </apex:form>
+    </div>
+    <!-- javascript -->
+    <apex:include pageName="TaskSorterScript" />
+</apex:page>
